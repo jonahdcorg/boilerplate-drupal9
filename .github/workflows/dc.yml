@@ -16,6 +16,7 @@ jobs:
         id: Depcheck
         with:
           path: './docroot'
+          format: 'SARIF'
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
