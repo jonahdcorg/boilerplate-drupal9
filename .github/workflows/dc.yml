@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Dependency Check
         run: |
-          wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.0.5/dependency-check-6.0.5-release.zip
+          wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.3.1/dependency-check-8.3.1-release.zip
           unzip dependency-check-6.0.5-release.zip
           ./dependency-check/bin/dependency-check.sh --project "My Project" --scan ./ --out . --format "SARIF"
 
