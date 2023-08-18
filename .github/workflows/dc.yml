@@ -14,6 +14,8 @@ jobs:
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@1.1.0
         id: Depcheck
+        with:
+          path: './docroot'
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
