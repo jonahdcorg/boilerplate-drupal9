@@ -11,14 +11,13 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@master
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@1.1.0
-        id: Depcheck
+      - name: Run Dependency Check
+        run: |
+          wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.0.5/dependency-check-6.0.5-release.zip
+          unzip dependency-check-6.0.5-release.zip
+          ./dependency-check/bin/dependency-check.sh --project "My Project" --scan ./ --out . --format "SARIF"
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
         with:
-          path: './docroot'
-          format: 'SARIF'
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
-        with:
-           name: Depcheck report
-           path: ${{github.workspace}}/reports
+          sarif_file: ./dependency-check-sarif.json
